@@ -11,7 +11,13 @@ export class Component {
   }
 }
 
-export const renderComponent = (Component, props, container) => {
+export const renderComponent = (
+  Component,
+  props,
+  container,
+  isSelf = false
+) => {
   const component = new Component(props);
+
   container.appendChild(component.render());
 };

@@ -1,4 +1,6 @@
-import { Component } from "./modules/MyReact.js";
+import BrowserRouter from "./modules/BrowserRouter.js";
+import { Component, renderComponent } from "./modules/MyReact.js";
+import ProductListPage from "./pages/ProductListPage.js";
 
 class App extends Component {
   constructor(props) {
@@ -13,5 +15,29 @@ class App extends Component {
 
   render() {
     this.container.innerHTML = "";
+
+    const { path } = this.state;
+    console.log("App 렌더링");
+    renderComponent(
+      BrowserRouter,
+      {
+        path,
+        history: {
+          push: () => {},
+          goBack: () => {},
+        },
+        routes: [
+          {
+            path: "/web",
+            Component: ProductListPage,
+          },
+        ],
+      },
+      this.container
+    );
+
+    return this.container;
   }
 }
+
+export default App;
