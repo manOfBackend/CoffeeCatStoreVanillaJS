@@ -11,13 +11,10 @@ export class Component {
   }
 }
 
-export const renderComponent = (
-  Component,
-  props,
-  container,
-  isSelf = false
-) => {
+export const renderComponent = (Component, props, container) => {
   const component = new Component(props);
-
-  container.appendChild(component.render());
+  const rendered = component.render();
+  if (container !== rendered) {
+    container.append(rendered);
+  }
 };

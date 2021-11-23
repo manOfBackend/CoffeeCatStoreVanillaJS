@@ -1,4 +1,5 @@
-import { Component } from "../modules/MyReact.js";
+import ProductListPageContainer from "../containers/ProdctListPageContainer.js";
+import { Component, renderComponent } from "../modules/MyReact.js";
 
 class ProductListPage extends Component {
   constructor(props) {
@@ -8,15 +9,13 @@ class ProductListPage extends Component {
   }
 
   render() {
-    this.container.innerHTML = "상품 목록 페이지";
+    this.container.innerHTML = "";
     const { history, match } = this.props;
-    const pageNumber = match.params.pageNumber;
-
-    // renderComponent(
-    //   ProductListPageContainer,
-    //   { history, pageNumber },
-    //   this.container
-    // );
+    renderComponent(
+      ProductListPageContainer,
+      { history, parent: this.container },
+      this.container
+    );
     return this.container;
   }
 }

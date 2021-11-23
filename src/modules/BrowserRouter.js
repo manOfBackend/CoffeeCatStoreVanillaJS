@@ -19,7 +19,7 @@ class DefaultNotFoundComponent extends Component {
 class BrowserRouter extends Component {
   constructor(props) {
     super(props);
-    this.container = document.createElement("div");
+    this.container = document.createDocumentFragment();
   }
 
   parseCurrentPath() {
@@ -74,8 +74,6 @@ class BrowserRouter extends Component {
 
     const targetRoute = routes.find((route) => route.path === pathKey);
 
-    console.log("pathKey", pathKey, params, targetRoute);
-
     const route = targetRoute ?? { Component: DefaultNotFoundComponent };
 
     const { Component, props } = route;
@@ -90,6 +88,7 @@ class BrowserRouter extends Component {
       },
       this.container
     );
+    console.log("router", this.container);
 
     return this.container;
   }
