@@ -50,6 +50,10 @@ class App extends Component {
             path: "/web",
             Component: ProductListPage,
           },
+          {
+            path: "/web/products/:productId",
+            Component: ProductDetailPage,
+          },
         ],
       },
       this.container

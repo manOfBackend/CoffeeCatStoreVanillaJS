@@ -15,6 +15,6 @@ export const renderComponent = (Component, props, container) => {
   const component = new Component(props);
   const rendered = component.render();
   if (container !== rendered) {
-    container.append(rendered);
+    container.appendChild(rendered);
   }
 };

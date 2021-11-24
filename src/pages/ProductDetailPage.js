@@ -4,6 +4,10 @@ import { Component, renderComponent } from "../modules/MyReact.js";
 class ProductDetailPage extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      productName: "",
+    };
     this.container = document.createElement("div");
     this.container.className = "ProductDetailPage";
   }
@@ -11,8 +15,19 @@ class ProductDetailPage extends Component {
   render() {
     this.container.innerHTML = "";
     const { history, match } = this.props;
+    const { productName } = this.state;
 
-    renderComponent(ProductDetailPageContainer, { history }, this.container);
+    const productId = match.params.productId;
+    console.log("detailpage");
+    renderComponent(
+      ProductDetailPageContainer,
+      {
+        history,
+        productId,
+        parent: this.container,
+      },
+      this.container
+    );
     return this.container;
   }
 }

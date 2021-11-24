@@ -31,12 +31,12 @@ class BrowserRouter extends Component {
       .filter((p) => !!p);
 
     const routePaths = routes.map((r) => r.path);
-
     let pathKey = "";
     let params = {};
     for (let i = 0; i < routePaths.length; i++) {
       const routePathTokens = routePaths[i].split("/").filter((p) => !!p);
 
+      console.log(routePathTokens);
       let isMatch = true;
       let tempParams = {};
       if (routePathTokens.length !== currentPathTokens.length) {
@@ -47,10 +47,11 @@ class BrowserRouter extends Component {
       currentPathTokens.forEach((token, idx) => {
         if (routePathTokens[idx] !== token) {
           isMatch = false;
-          return;
         }
         if (routePathTokens[idx].startsWith(":")) {
-          tempParams[routePathTokens[idx].splice(0, 1)] = token;
+          console.log("gg", routePathTokens[idx].slice(1));
+          tempParams[routePathTokens[idx].slice(1)] = token;
+          isMatch = true;
         }
       });
 
