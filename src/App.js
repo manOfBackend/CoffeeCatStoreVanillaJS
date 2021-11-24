@@ -11,16 +11,16 @@ class App extends Component {
       path: location.pathname,
     };
 
-    this.container = document.createDocumentFragment();
+    this.container = document.querySelector(".App");
 
     window.addEventListener("popstate", this.handlePopState);
   }
 
-  push(path) {
+  push = (path) => {
     if (path === this.state.path) return;
     history.pushState({ path }, "", path);
     this.setState({ path });
-  }
+  };
 
   goBack = () => {
     history.back();
@@ -36,7 +36,7 @@ class App extends Component {
     this.container.innerHTML = "";
 
     const { path } = this.state;
-    console.log("main");
+
     renderComponent(
       BrowserRouter,
       {

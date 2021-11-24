@@ -30,13 +30,15 @@ class BrowserRouter extends Component {
       .split("/")
       .filter((p) => !!p);
 
+    console.log("current", currentPathTokens);
+
     const routePaths = routes.map((r) => r.path);
     let pathKey = "";
     let params = {};
     for (let i = 0; i < routePaths.length; i++) {
       const routePathTokens = routePaths[i].split("/").filter((p) => !!p);
 
-      console.log(routePathTokens);
+      console.log("routePathTokens", routePathTokens);
       let isMatch = true;
       let tempParams = {};
       if (routePathTokens.length !== currentPathTokens.length) {
@@ -49,7 +51,6 @@ class BrowserRouter extends Component {
           isMatch = false;
         }
         if (routePathTokens[idx].startsWith(":")) {
-          console.log("gg", routePathTokens[idx].slice(1));
           tempParams[routePathTokens[idx].slice(1)] = token;
           isMatch = true;
         }
@@ -77,6 +78,7 @@ class BrowserRouter extends Component {
 
     const route = targetRoute ?? { Component: DefaultNotFoundComponent };
 
+    console.log("route", route);
     const { Component, props } = route;
 
     renderComponent(
@@ -84,7 +86,6 @@ class BrowserRouter extends Component {
       {
         history,
         match: { params },
-        location: { search: location.serach },
         ...props,
       },
       this.container

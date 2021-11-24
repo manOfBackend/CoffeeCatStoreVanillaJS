@@ -31,6 +31,7 @@ body {
 }
 
 .Product {
+  cursor: pointer;
   width: 250px;
   padding: 16px;
   border-radius: 5px;
@@ -91,6 +92,7 @@ body {
 
 .ProductDetail__selectedOptions h3 {
   margin-top: 0;
+  line-height: 50px;
 }
 
 .ProductDetail__selectedOptions input {
@@ -101,10 +103,12 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  height: 50px;
+  line-height: 50px;
 }
 
 .ProductDetail ul {
-  margin-bottom: 16px;
+  margin-bottom: 30px;
 }
 
 .OrderButton {

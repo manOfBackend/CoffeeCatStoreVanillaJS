@@ -36,6 +36,20 @@ class ProductListPageContainer extends Component {
     this.props.history.push(`/products/${productId}`);
   };
 
+  addEvents() {
+    const productBox = document.querySelector(".ProductListPage > ul");
+
+    if (productBox) {
+      productBox.addEventListener("click", (e) => {
+        console.log("e", e);
+        const { id } = e.target.dataset;
+        const { history } = this.props;
+
+        history.push(`/web/products/${id}`);
+      });
+    }
+  }
+
   render() {
     this.container.innerHTML = "";
     const { history } = this.props;
@@ -50,6 +64,7 @@ class ProductListPageContainer extends Component {
       this.container
     );
 
+    this.addEvents();
     return this.container;
   }
 }

@@ -27,9 +27,11 @@ class ProductList extends Component {
         li.dataset.id = product.id;
 
         const img = document.createElement("img");
+        img.dataset.id = product.id;
         img.src = product.imageUrl;
 
         const info = document.createElement("div");
+        info.dataset.id = product.id;
         info.className = "Product__info";
 
         const name = document.createElement("div");
